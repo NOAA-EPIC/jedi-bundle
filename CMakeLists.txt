@@ -35,42 +35,20 @@ include( $ENV{jedi_cmake_ROOT}/share/jedicmake/Functions/git_functions.cmake )
 #ecbuild_bundle( PROJECT fckit    GIT "https://github.com/ecmwf/fckit.git" TAG 0.11.0 )
 #ecbuild_bundle( PROJECT atlas    GIT "https://github.com/ecmwf/atlas.git" TAG 0.35.0 )
 
-option(BUILD_GSIBEC "Build GSIbec" OFF)
-if(BUILD_GSIBEC)
-  ecbuild_bundle( PROJECT gsibec   GIT "https://github.com/geos-esm/GSIbec" TAG 1.2.1 )
-endif()
-
-ecbuild_bundle( PROJECT gsw      GIT "https://github.com/jcsda/GSW-Fortran.git" BRANCH develop UPDATE )
-
-ecbuild_bundle( PROJECT oops     GIT "https://github.com/jcsda/oops.git"        BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT vader    GIT "https://github.com/jcsda/vader.git"       BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT saber    GIT "https://github.com/jcsda/saber.git"       BRANCH develop UPDATE )
-
-ecbuild_bundle( PROJECT crtm     GIT "https://github.com/jcsda/CRTMv3.git"      BRANCH develop UPDATE )
-
-ecbuild_bundle( PROJECT ioda     GIT "https://github.com/jcsda/ioda.git"        BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT ufo      GIT "https://github.com/jcsda/ufo.git"         BRANCH develop UPDATE )
-
-# Build IODA converters if requested
-option(BUILD_IODA_CONVERTERS "Build IODA Converters" OFF)
-if(BUILD_IODA_CONVERTERS)
-  ecbuild_bundle( PROJECT iodaconv GIT "https://github.com/jcsda/ioda-converters.git" BRANCH develop UPDATE )
-endif()
-
-ecbuild_bundle( PROJECT fv3         GIT "https://github.com/jcsda/GFDL_atmos_cubed_sphere.git"       BRANCH release-stable UPDATE )
-ecbuild_bundle( PROJECT femps       GIT "https://github.com/jcsda/femps.git"                         BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/jcsda/fv3-jedi-linearmodel.git"          BRANCH develop UPDATE )
-ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/jcsda/fv3-jedi.git"                      BRANCH develop UPDATE )
-
-ecbuild_bundle( PROJECT mom6        GIT "https://github.com/jcsda/MOM6.git"            BRANCH main-ecbuild UPDATE RECURSIVE )
-ecbuild_bundle( PROJECT soca        GIT "https://github.com/jcsda/soca.git"            BRANCH develop UPDATE )
-
-set(MPAS_DOUBLE_PRECISION "ON" CACHE STRING "MPAS-Model: Use double precision 64-bit Floating point.")
-set(MPAS_CORES init_atmosphere atmosphere CACHE STRING "MPAS-Model: cores to build.")
-ecbuild_bundle( PROJECT mpas           GIT "https://github.com/jcsda/MPAS-Model.git"   BRANCH release-stable UPDATE )
-ecbuild_bundle( PROJECT mpas-jedi      GIT "https://github.com/jcsda/mpas-jedi.git"    BRANCH develop UPDATE )
-
-ecbuild_bundle( PROJECT coupling   GIT "https://github.com/jcsda/coupling.git"         BRANCH develop UPDATE )
+ecbuild_bundle( PROJECT crtm        GIT "https://github.com/JCSDA/crtm.git"                     TAG bb7adbf )
+ecbuild_bundle( PROJECT gsw         GIT "https://github.com/JCSDA-internal/GSW-Fortran.git"     TAG 697cbeb )
+ecbuild_bundle( PROJECT bufr-query  GIT "https://github.com/NOAA-EMC/bufr-query"                TAG 97367fc )
+ecbuild_bundle( PROJECT oops        GIT "https://github.com/JCSDA/oops.git"                     TAG 215f2de )
+ecbuild_bundle( PROJECT vader       GIT "https://github.com/JCSDA/vader.git"                    TAG 27bb498 )
+ecbuild_bundle( PROJECT saber       GIT "https://github.com/JCSDA/saber.git"                    TAG 379cc26 )
+ecbuild_bundle( PROJECT ioda        GIT "https://github.com/JCSDA/ioda.git"                     TAG 28269a0 )
+ecbuild_bundle( PROJECT ufo         GIT "https://github.com/JCSDA/ufo.git"                      TAG 5ec987f )
+ecbuild_bundle( PROJECT fv3         GIT "https://github.com/JCSDA/GFDL_atmos_cubed_sphere.git"  TAG ab25dc0 )
+ecbuild_bundle( PROJECT femps       GIT "https://github.com/JCSDA/femps.git"                    TAG 4f12677 )
+ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/JCSDA/fv3-jedi-linearmodel.git"     TAG 5994c38 )
+ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/JCSDA/fv3-jedi.git"                 TAG 9ca9320 )
+ecbuild_bundle( PROJECT soca        GIT "https://github.com/JCSDA-internal/soca.git"            TAG bdd7828 )
+ecbuild_bundle( PROJECT iodaconv    GIT "https://github.com/JCSDA-internal/ioda-converters.git" TAG cdab772 )
 
 ecbuild_bundle_finalize()
 
