@@ -2,10 +2,6 @@ help([[
 Load environment for running the GDAS application with Intel compilers and MPI.
 ]])
 
-local pkgName    = myModuleName()
-local pkgVersion = myModuleVersion()
-local pkgNameVer = myModuleFullName()
-
 prepend_path("MODULEPATH", '/work/noaa/epic/role-epic/spack-stack/hercules/spack-stack-1.7.0/envs/ue-intel/install/modulefiles/Core')
 prepend_path("MODULEPATH", '/work2/noaa/da/python/opt/modulefiles/stack')
 
@@ -60,35 +56,21 @@ load("udunits/2.2.28")
 load("ncview/2.1.9")
 load("netcdf-cxx4/4.3.1")
 load("py-pybind11/2.11.0")
+load("py-pycodestyle/2.11.0")
 --load("crtm/v2.4_jedi")
 load("contrib/0.1")
 load("noaatools/3.1")
 load("rocoto/1.3.7")
 
 load("hpc/1.2.0")
-unload("python/3.10.13")
-unload("py-numpy/1.22.3")
-load("miniconda3/4.6.14")
-load("gdasapp/1.0.0")
+--unload("python/3.10.13")
+--unload("py-numpy/1.22.3")
+--load("miniconda3/4.6.14")
+--load("gdasapp/1.0.0")
 -- below is a hack because of cmake finding the wrong python...
-setenv("CONDA_PREFIX", "/work2/noaa/da/python/opt/core/miniconda3/4.6.14/envs/gdasapp/")
+--setenv("CONDA_PREFIX", "/work2/noaa/da/python/opt/core/miniconda3/4.6.14/envs/gdasapp/")
 
 setenv("CC","mpiicc")
 setenv("FC","mpiifort")
 setenv("CXX","mpiicpc")
-local mpiexec = '/opt/slurm/bin/srun'
-local mpinproc = '-n'
-setenv('MPIEXEC_EXEC', mpiexec)
-setenv('MPIEXEC_NPROC', mpinproc)
 
-setenv("CRTM_FIX","/work2/noaa/da/role-da/GDASApp/fix/crtm/2.4.0")
-setenv("GDASAPP_TESTDATA","/work2/noaa/da/role-da/GDASApp/testdata")
-setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/work2/noaa/da/role-da/GDASApp/unittestdata")
-prepend_path("PATH","/apps/contrib/NCEP/libs/hpc-stack/intel-2018.4/prod_util/1.2.2/bin")
-
-execute{cmd="ulimit -s unlimited",modeA={"load"}}
-
-whatis("Name: ".. pkgName)
-whatis("Version: ".. pkgVersion)
-whatis("Category: GDASApp")
-whatis("Description: Load all libraries needed for GDASApp")

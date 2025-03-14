@@ -66,7 +66,7 @@ ecbuild_bundle( PROJECT vader       GIT "https://github.com/JCSDA/vader.git"    
 ecbuild_bundle( PROJECT saber       GIT "https://github.com/JCSDA/saber.git"                    TAG 379cc26 )
 option(ENABLE_IODA_DATA "Obtain ioda test data from ioda-data repository (vs tarball)" ON)
 ecbuild_bundle( PROJECT ioda        GIT "https://github.com/JCSDA/ioda.git"                     TAG 28269a0 )
-option(ENABLE_IODA_DATA "Obtain ioda test data from ioda-data repository (vs tarball)" ON)
+option(ENABLE_UFO_DATA "Obtain ufo test data from ufo-data repository (vs tarball)" ON)
 ecbuild_bundle( PROJECT ufo         GIT "https://github.com/JCSDA/ufo.git"                      TAG 5ec987f )
 include(fv3-interface.cmake)
 ecbuild_bundle( PROJECT fv3         GIT "https://github.com/JCSDA/GFDL_atmos_cubed_sphere.git"  TAG ab25dc0 )
@@ -74,7 +74,7 @@ ecbuild_bundle( PROJECT femps       GIT "https://github.com/JCSDA/femps.git"    
 ecbuild_bundle( PROJECT fv3-jedi-lm GIT "https://github.com/JCSDA/fv3-jedi-linearmodel.git"     TAG 5994c38 )
 option(ENABLE_FV3_JEDI_DATA "Obtain fv3-jedi test data from fv3-jedi-data repository (vs tarball)" ON)
 ecbuild_bundle( PROJECT fv3-jedi    GIT "https://github.com/JCSDA/fv3-jedi.git"                 TAG 9ca9320 )
-ecbuild_bundle( PROJECT soca        GIT "https://github.com/JCSDA-internal/soca.git"            TAG bdd7828 )
+#ecbuild_bundle( PROJECT soca        GIT "https://github.com/JCSDA-internal/soca.git"            TAG bdd7828 )
 ecbuild_bundle( PROJECT iodaconv    GIT "https://github.com/JCSDA-internal/ioda-converters.git" TAG cdab772 )
 
 ecbuild_bundle_finalize()
