@@ -2,10 +2,6 @@ help([[
 Load environment for running the GDAS application with Intel compilers and MPI.
 ]])
 
-local pkgName    = myModuleName()
-local pkgVersion = myModuleVersion()
-local pkgNameVer = myModuleFullName()
-
 prepend_path("MODULEPATH", '/contrib/spack-stack//spack-stack-1.6.0/envs/unified-env-rocky8/install/modulefiles/Core')
 --prepend_path("MODULEPATH", '/scratch1/NCEPDEV/da/python/opt/modulefiles/stack')
 
@@ -81,17 +77,3 @@ setenv("CC","mpiicc")
 setenv("FC","mpiifort")
 setenv("CXX","mpiicpc")
 
-local mpiexec = '/apps/slurm/default/bin/srun'
-local mpinproc = '-n'
-setenv('MPIEXEC_EXEC', mpiexec)
-setenv('MPIEXEC_NPROC', mpinproc)
-
-setenv("CRTM_FIX","/scratch1/NCEPDEV/da/role.jedipara/GDASApp/fix/crtm/2.4.0")
-setenv("GDASAPP_TESTDATA","/scratch1/NCEPDEV/da/role.jedipara/GDASApp/testdata")
-setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/scratch1/NCEPDEV/da/role.jedipara/GDASApp/unittestdata")
---prepend_path("PATH","/scratch2/NCEPDEV/nwprod/hpc-stack/libs/hpc-stack/intel-18.0.5.274/prod_util/1.2.2/bin")
-
-whatis("Name: ".. pkgName)
-whatis("Version: ".. pkgVersion)
-whatis("Category: GDASApp")
-whatis("Description: Load all libraries needed for GDASApp")

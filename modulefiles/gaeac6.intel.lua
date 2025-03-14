@@ -2,10 +2,6 @@ help([[
 Load environment for running the GDAS application with Intel compilers and MPI.
 ]])
 
-local pkgName    = myModuleName()
-local pkgVersion = myModuleVersion()
-local pkgNameVer = myModuleFullName()
-
 prepend_path("MODULEPATH", '/ncrc/proj/epic/spack-stack/c6/spack-stack-1.6.0/envs/unified-env/install/modulefiles/Core')
 prepend_path("MODULEPATH", '/ncrc/proj/epic/rocoto/modulefiles')
 
@@ -80,16 +76,3 @@ setenv("CC","cc")
 setenv("CXX","CC")
 setenv("FC","ftn")
 
-local mpiexec = '/usr/bin/srun'
-local mpinproc = '-n'
-setenv('MPIEXEC_EXEC', mpiexec)
-setenv('MPIEXEC_NPROC', mpinproc)
-
-setenv("CRTM_FIX","/gpfs/f6/ira-sti/world-shared/GDASApp/fix/crtm/2.4.0")
-setenv("GDASAPP_TESTDATA","/gpfs/f6/ira-sti/world-shared/GDASApp/testdata")
-setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/gpfs/f6/ira-sti/world-shared/GDASApp/unittestdata")
-
-whatis("Name: ".. "pkgName")
-whatis("Version: ".. "pkgVersion")
-whatis("Category: GDASApp")
-whatis("Description: Load all libraries needed for GDASApp")

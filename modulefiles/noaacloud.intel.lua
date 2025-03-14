@@ -2,10 +2,6 @@ help([[
 Load environment for running the GDAS application with Intel compilers and MPI.
 ]])
 
-local pkgName    = myModuleName()
-local pkgVersion = myModuleVersion()
-local pkgNameVer = myModuleFullName()
-
 prepend_path("MODULEPATH", "/contrib/spack-stack/spack-stack-1.6.0/envs/unified-env/install/modulefiles/Core")
 
 -- below two lines get us access to the spack-stack modules
@@ -77,15 +73,3 @@ setenv("CC","mpiicc")
 setenv("FC","mpiifort")
 setenv("CXX","mpiicpc")
 
-local mpiexec = '/apps/slurm/default/bin/srun'
-local mpinproc = '-n'
-setenv('MPIEXEC_EXEC', mpiexec)
-setenv('MPIEXEC_NPROC', mpinproc)
-
-setenv("CRTM_FIX","/contrib/Wei.Huang/data/hack-orion/crtm/2.4.0_skylab_3.0")
-setenv("GDASAPP_TESTDATA","/contrib/Wei.Huang/data/hack-orion/data")
-
-whatis("Name: ".. pkgName)
-whatis("Version: ".. pkgVersion)
-whatis("Category: GDASApp")
-whatis("Description: Load all libraries needed for GDASApp")
