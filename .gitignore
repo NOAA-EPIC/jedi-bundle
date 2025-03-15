@@ -6,6 +6,8 @@
 *.pyc
 *.v3breakpoints
 *.swp
+*.err
+*.out
 *.sublime-workspace
 *~
 git_branches_as_of_*
