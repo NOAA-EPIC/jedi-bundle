@@ -9,5 +9,5 @@
 #SBATCH --time=02:00:00
 #SBATCH --job-name="build_jedi"
 
-export HOME_DIR="/work/noaa/epic/UFS_Land-DA_v2.1/jedi_bundle_orion"
+export HOME_DIR="/work/noaa/epic/UFS_Land-DA_v3.0/jedi_bundle_orion"
 sh ${HOME_DIR}/jedi-bundle/modulefiles/compile_orion.sh
