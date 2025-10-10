@@ -10,7 +10,6 @@ prepend_path("MODULEPATH", '/contrib/spack-stack/spack-stack-1.9.2/envs/ue-oneap
 
 load("stack-oneapi/2024.2.1")
 load("stack-intel-oneapi-mpi/2021.13")
-
 load("cmake/3.27.9")
 load("gettext/0.22.5")
 load("curl/8.10.1")
@@ -75,16 +74,16 @@ setenv("CC","mpiicc")
 setenv("CXX","mpiicpc")
 setenv("FC","mpiifort")
 
---local mpiexec = '/apps/slurm/default/bin/srun'
---local mpinproc = '-n'
---setenv('MPIEXEC_EXEC', mpiexec)
---setenv('MPIEXEC_NPROC', mpinproc)
+local mpiexec = '/apps/slurm/default/bin/srun'
+local mpinproc = '-n'
+setenv('MPIEXEC_EXEC', mpiexec)
+setenv('MPIEXEC_NPROC', mpinproc)
 
---setenv("CRTM_FIX","/scratch1/NCEPDEV/da/role.jedipara/GDASApp/fix/crtm/2.4.0")
---setenv("GDASAPP_TESTDATA","/scratch1/NCEPDEV/da/role.jedipara/GDASApp/testdata")
---setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/scratch1/NCEPDEV/da/role.jedipara/GDASApp/unittestdata")
+setenv("CRTM_FIX","/scratch3/NCEPDEV/da/role.jedipara/GDASApp/fix/crtm/2.4.0")
+setenv("GDASAPP_TESTDATA","/scratch3/NCEPDEV/da/role.jedipara/GDASApp/testdata")
+setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/scratch3/NCEPDEV/da/role.jedipara/GDASApp/unittestdata")
 
---whatis("Name: ".. pkgName)
---whatis("Version: ".. pkgVersion)
---whatis("Category: GDASApp")
---whatis("Description: Load all libraries needed for GDASApp")
+whatis("Name: ".. pkgName)
+whatis("Version: ".. pkgVersion)
+whatis("Category: GDASApp")
+whatis("Description: Load all libraries needed for GDASApp")
