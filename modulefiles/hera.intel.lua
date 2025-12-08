@@ -2,10 +2,6 @@ help([[
 Load environment for running the GDAS application with Intel compilers and MPI.
 ]])
 
-local pkgName    = myModuleName()
-local pkgVersion = myModuleVersion()
-local pkgNameVer = myModuleFullName()
-
 prepend_path("MODULEPATH", '/contrib/spack-stack/spack-stack-1.9.2/envs/ue-oneapi-2024.2.1/install/modulefiles/Core')
 
 load("stack-oneapi/2024.2.1")
@@ -13,7 +9,7 @@ load("stack-intel-oneapi-mpi/2021.13")
 load("cmake/3.27.9")
 load("gettext/0.22.5")
 load("curl/8.10.1")
-load("zlib/1.2.13")
+load("zlib/1.2.11")
 load("git/2.42.0")
 load("hdf5/1.14.3")
 load("parallel-netcdf/1.12.3")
@@ -83,7 +79,3 @@ setenv("CRTM_FIX","/scratch3/NCEPDEV/da/role.jedipara/GDASApp/fix/crtm/2.4.0")
 setenv("GDASAPP_TESTDATA","/scratch3/NCEPDEV/da/role.jedipara/GDASApp/testdata")
 setenv("GDASAPP_UNIT_TEST_DATA_PATH", "/scratch3/NCEPDEV/da/role.jedipara/GDASApp/unittestdata")
 
-whatis("Name: ".. pkgName)
-whatis("Version: ".. pkgVersion)
-whatis("Category: GDASApp")
-whatis("Description: Load all libraries needed for GDASApp")
