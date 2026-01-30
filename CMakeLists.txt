@@ -87,5 +87,8 @@ ecbuild_bundle( PROJECT fv3-jedi       GIT "https://github.com/JCSDA/fv3-jedi.gi
 
 ecbuild_bundle( PROJECT soca           GIT "https://github.com/JCSDA/soca.git"                     TAG bb7b1e1 RECURSIVE )
 
+# Build GDAS utils
+ecbuild_bundle( PROJECT gdas-utils SOURCE "./sorc/gdas-utils" )
+
 ecbuild_bundle_finalize()
 
