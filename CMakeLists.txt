@@ -50,7 +50,7 @@ include( $ENV{jedi_cmake_ROOT}/share/jedicmake/Functions/git_functions.cmake )
 #ecbuild_bundle( PROJECT fckit    GIT "https://github.com/ecmwf/fckit.git" TAG 0.11.0 )
 #ecbuild_bundle( PROJECT atlas    GIT "https://github.com/ecmwf/atlas.git" TAG 0.35.0 )
 
-option(BUILD_GSIBEC "Build GSIbec" OFF)
+option(BUILD_GSIBEC "Build GSIbec" ON)
 if(BUILD_GSIBEC)
   ecbuild_bundle( PROJECT gsibec   GIT "https://github.com/geos-esm/GSIbec" TAG 1.2.1 )
 endif()
