@@ -1,0 +1,60 @@
+# (C) Copyright 2020-2020 NOAA/NWS/NCEP/EMC
+#
+# This software is licensed under the terms of the Apache Licence Version 2.0
+# which can be obtained at http://www.apache.org/licenses/LICENSE-2.0.
+
+if( NOT CMAKE_BUILD_TYPE MATCHES "Debug" )
+  add_definitions( -DNDEBUG )
+endif()
+
+
+if ( APPLE )
+###
+#   Mac is different from other platforms in that there is only one fortran
+#	compiler but two different c++ compiled, gnu and clang
+###
+    if (CMAKE_CXX_COMPILER_ID MATCHES "GNU") 
+        include( compiler_flags_GNU_Fortran )
+	include( compiler_flags_GNU_CXX )
+    else()
+        include( compiler_flags_Clang_GNU_Fortran )
+	include( compiler_flags_Clang_CXX )   
+    endif() 
+else()
+#################
+# Fortran
+################
+    if( CMAKE_Fortran_COMPILER_ID MATCHES "GNU" )
+        include( compiler_flags_GNU_Fortran )
+    elseif( CMAKE_Fortran_COMPILER_ID MATCHES "Intel" )
+        include( compiler_flags_Intel_Fortran )
+    elseif( CMAKE_Fortran_COMPILER_ID MATCHES "Cray" )
+        include( compiler_flags_Cray_Fortran )
+    else()
+        message( STATUS "Fortran compiler with ID ${CMAKE_Fortran_COMPILER_ID} will be used with CMake default options")
+    endif()
+#######################################################################################
+# C++
+#######################################################################################
+    if( CMAKE_CXX_COMPILER_ID MATCHES "GNU" )
+	include( compiler_flags_GNU_CXX )
+    elseif( CMAKE_CXX_COMPILER_ID MATCHES "Intel" )
+	include( compiler_flags_Intel_CXX )
+    elseif( CMAKE_CXX_COMPILER_ID MATCHES "Clang" )
+	include( compiler_flags_Clang_CXX )
+    else()
+        message( STATUS "C++ compiler with ID ${CMAKE_CXX_COMPILER_ID} will be used with CMake default options")
+    endif()
+endif()
+
+# Only for x86_64: allow larger datasets in memory
+if(CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+    set(FORTRAN_COMPILER_GNU_FLAGS
+        ${FORTRAN_COMPILER_GNU_FLAGS}
+        $<$<COMPILE_LANGUAGE:Fortran>:-mcmodel=medium>
+    )
+    set(FORTRAN_COMPILER_INTEL_FLAGS
+        ${FORTRAN_COMPILER_INTEL_FLAGS}
+        $<$<COMPILE_LANGUAGE:Fortran>:-mcmodel=medium>
+    )
+endif()
